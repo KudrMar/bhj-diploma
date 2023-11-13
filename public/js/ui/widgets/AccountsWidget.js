@@ -14,7 +14,12 @@ class AccountsWidget {
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if (!element) {
+      throw new Error("Не заполнен элеимент!")
+    }
+    this.element = element;
+    this.registerEvents();
+    this.update();
   }
 
   /**
@@ -25,7 +30,20 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
+    const createAccount = document.querySelector(".create-account");
+    createAccount.addEventListener('click', event => {
+      event.preventDefault();
+      App.getModal('createAccount').open();
+    })
 
+    const account = document.querySelectorAll(".account");
+    account.forEach(element => {
+      element.addEventListener('click', event => {
+        event.preventDefault();
+        this.onSelectAccount(element);
+      })
+    });
+    
   }
 
   /**
@@ -39,7 +57,16 @@ class AccountsWidget {
    * метода renderItem()
    * */
   update() {
-
+    if (User.current()) {
+     
+    Account.list(User.current(),(err, response) => {
+      if (response && response.success) {
+        this.clear();
+        this.renderItem(response.data);
+      }
+    }
+    )
+  }
   }
 
   /**
@@ -48,7 +75,6 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
-
   }
 
   /**
@@ -59,8 +85,7 @@ class AccountsWidget {
    * Вызывает App.showPage( 'transactions', { account_id: id_счёта });
    * */
   onSelectAccount( element ) {
-
-  }
+  }
 
   /**
    * Возвращает HTML-код счёта для последующего
@@ -68,8 +93,7 @@ class AccountsWidget {
    * item - объект с данными о счёте
    * */
   getAccountHTML(item){
-
-  }
+  }
 
   /**
    * Получает массив с информацией о счетах.
@@ -78,6 +102,5 @@ class AccountsWidget {
    * и добавляет его внутрь элемента виджета
    * */
   renderItem(data){
-
-  }
+  }
 }
