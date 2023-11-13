@@ -13,7 +13,7 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(user) {
-     localStorage.setItem('user', JSON.stringify(user));
+     localStorage.setItem("user", JSON.stringify(user));
   }
 
   /**
@@ -29,7 +29,7 @@ class User {
    * из локального хранилища
    * */
   static current() {
-    return JSON.parse(localStorage.getItem('user'));
+    return JSON.parse(localStorage.getItem("user"));
   }
 
   /**
@@ -40,7 +40,7 @@ class User {
       createRequest({
       url: this.URL + "/current",
       data: {},
-      method: 'GET',
+      method: "GET",
       callback: (err, response) => {
         this.unsetCurrent();
         if (response && response.user) {
@@ -59,9 +59,9 @@ class User {
    * */
   static login(data, callback) {
     createRequest({
-      url: this.URL + '/login',
-      method: 'POST',
-      responseType: 'json',
+      url: this.URL + "/login",
+      method: "POST",
+      responseType: "json",
       data: data,
       callback: (err, response) => {
         if (response && response.user) {
@@ -80,9 +80,9 @@ class User {
    * */
   static register(data, callback) {
     createRequest({
-      url: this.URL + '/register',
-      method: 'POST',
-      responseType: 'json',
+      url: this.URL + "/register",
+      method: "POST",
+      responseType: "json",
       data: data,
       callback: (err, response) => {
         this.unsetCurrent();
@@ -100,9 +100,9 @@ class User {
    * */
   static logout(callback) {
     createRequest({
-      url: this.URL + '/logout',
-      method: 'POST',
-      responseType: 'json',
+      url: this.URL + "/logout",
+      method: "POST",
+      responseType: "json",
       data: {},
       callback: (err, response) => {
         if (response && response.user) {

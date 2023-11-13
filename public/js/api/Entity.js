@@ -16,10 +16,10 @@ class Entity {
   static list(data, callback){
     createRequest({
       url: this.URL,
-      method: 'GET',
-      responseType: 'json',
+      method: "GET",
+      responseType: "json",
       data: data,
-      callback: callback
+      callback
     });
   }
 
@@ -32,9 +32,9 @@ class Entity {
       createRequest({
       url: this.URL,
       data: data,
-      method: 'PUT',
-      responseType: 'json',
-      callback: callback
+      method: "PUT",
+      responseType: "json",
+      callback
     });
   }
 
@@ -46,9 +46,9 @@ class Entity {
       createRequest({
       url: this.URL,
       data: data,
-      method: 'DELETE',
-      responseType: 'json',
-      callback: callback
+      method: "DELETE",
+      responseType: "json",
+      callback
     });
   }
 }

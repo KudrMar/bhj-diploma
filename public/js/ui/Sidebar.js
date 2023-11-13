@@ -19,7 +19,7 @@ class Sidebar {
    * */
   static initToggleButton() {
     const bodyEl = document.body;
-    document.addEventListener('click', event => {
+    document.addEventListener("click", event => {
       if(event.target.className.includes("sidebar-toggle")){
         if (bodyEl.classList.contains("sidebar-open")) {
           bodyEl.classList.remove("sidebar-open");
@@ -46,23 +46,23 @@ class Sidebar {
    * */
   static initAuthLinks() {
     const menuItemLogin = document.querySelector(".menu-item_login");
-    menuItemLogin.addEventListener('click', event => {
+    menuItemLogin.addEventListener("click", event => {
       event.preventDefault();
-      App.getModal('login').open();
+      App.getModal("login").open();
     });
 
     const menuItemRegister = document.querySelector(".menu-item_register");
-    menuItemRegister.addEventListener('click', event => {
+    menuItemRegister.addEventListener("click", event => {
       event.preventDefault();
-      App.getModal('register').open();
+      App.getModal("register").open();
     });
 
     const menuItemLogout = document.querySelector(".menu-item_logout");
-    menuItemLogout.addEventListener('click', event => {
+    menuItemLogout.addEventListener("click", event => {
       event.preventDefault();
       User.logout(response => {
         //if (response && response.success) {
-          App.setState( 'init' )
+          App.setState("init")
         //}
       });
      

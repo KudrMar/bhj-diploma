@@ -18,7 +18,7 @@ const createRequest = (options = {}) => {
   let data = options.data;
   if (options.method === "GET") {
     for (let key in data) {
-      paramURL += paramURL.trim() == "" + key + "=" + data[key] ? "&" : "" + key + "=" + data[key];
+      paramURL += paramURL.trim() == "" ? "?" + key + "=" + data[key] : "&" + key + "=" + data[key];
     }
     try {
     xhr.open(options.method, options.url+paramURL);
