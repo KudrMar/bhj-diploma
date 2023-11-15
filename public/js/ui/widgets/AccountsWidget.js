@@ -30,11 +30,6 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
-    // const createAccount = document.querySelector(".create-account");
-    // createAccount.addEventListener("click", event => {
-    //   event.preventDefault();
-    //   App.getModal("createAccount").open();
-    // })
 
     this.element.addEventListener("click", event => {
       event.preventDefault();
@@ -46,13 +41,6 @@ class AccountsWidget {
         this.onSelectAccount(elementAccount);
       }    
     })
-    // const account = document.querySelectorAll(".account");
-    // account.forEach(element => {
-    //   element.addEventListener("click", event => {
-    //     event.preventDefault();
-    //     this.onSelectAccount();
-    //   })
-    // });
     
   }
 
