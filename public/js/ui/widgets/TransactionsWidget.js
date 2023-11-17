@@ -11,9 +11,9 @@ class TransactionsWidget {
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
-  constructor( element ) {
+  constructor(element) {
     if (!element) {
-      throw new Error("Не заполнен элеимент!")
+      throw new Error("Не заполнен элемент!")
     }
     this.element = element;
     this.registerEvents();
@@ -25,13 +25,13 @@ class TransactionsWidget {
    * экземпляра окна
    * */
   registerEvents() {
-    const btnIncome = this.element.querySelector(".create-income-button");    
+    const btnIncome = this.element.querySelector(".create-income-button");
     btnIncome.addEventListener("click", () => {
-      const modal = App.getModal("newIncome").open();
+      App.getModal("newIncome").open();
     });
-    const btnExpense = this.element.querySelector(".create-expense-button");    
+    const btnExpense = this.element.querySelector(".create-expense-button");
     btnExpense.addEventListener("click", () => {
-      const modal = App.getModal("newExpense").open();
-    });
+      App.getModal("newExpense").open();
+    });
   }
 }

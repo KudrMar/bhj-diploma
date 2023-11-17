@@ -19,11 +19,10 @@ class CreateTransactionForm extends AsyncForm {
   renderAccountsList() {
     Account.list(User.current(), (err, response) => {
       if (response) {
-        this.element.querySelector(".accounts-select").innerHTML = "";
-        response.data.forEach(account => {
-          const itemAccount = `<option value="${account.id}">${account.name}</option>`;
-          this.element.querySelector(".accounts-select").insertAdjacentHTML("afterbegin", itemAccount);
-        });
+        this.element.querySelector(".accounts-select").innerHTML = response.data.reduce((accor, account) => {
+          return accor + `
+          <option value="${account.id}">${account.name}</option>`;
+        },``);
       }
     });
   }
@@ -51,4 +50,3 @@ class CreateTransactionForm extends AsyncForm {
   }
 }
 
-//(this.element.id = "new-expense-form")

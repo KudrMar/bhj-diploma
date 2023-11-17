@@ -13,7 +13,7 @@ class UserWidget {
    * */
   constructor(element){
     if (!element) {
-      throw new Error("Не заполнен элеимент!")
+      throw new Error("Не заполнен элемент!")
     }
     this.element = element;
   }

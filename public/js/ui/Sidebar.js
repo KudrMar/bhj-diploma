@@ -20,20 +20,8 @@ class Sidebar {
   static initToggleButton() {
     const bodyEl = document.body;
     document.addEventListener("click", event => {
-      if(event.target.className.includes("sidebar-toggle")){
-        if (bodyEl.classList.contains("sidebar-open")) {
-          bodyEl.classList.remove("sidebar-open");
-          if (!bodyEl.classList.contains("sidebar-collapse")) {
-            bodyEl.classList.add("sidebar-collapse");      
-          } 
-        }
-        else {
-          bodyEl.classList.add("sidebar-open");
-          if (bodyEl.classList.contains("sidebar-collapse")) {
-            bodyEl.classList.remove("sidebar-collapse");
-          }
-        }
-      }
+      bodyEl.classList.toggle("sidebar-open");
+      bodyEl.classList.toggle("sidebar-collapse");
     });
   }
 
@@ -62,10 +50,10 @@ class Sidebar {
       event.preventDefault();
       User.logout(response => {
         //if (response && response.success) {
-          App.setState("init")
+        App.setState("init")
         //}
       });
-     
+
     });
   }
 }
